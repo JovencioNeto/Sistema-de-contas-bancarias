@@ -6,7 +6,10 @@ class SavingAccount extends BankAccount{
     }
 
     applyInterest(){
-        super(balance) += (this.interestRate * super(balance))
+        const balance = super.getBalance()
+        balance += (this.interestRate * balance)
+        console.log(`Aplicado ${interestRate}% de juros`)
+        console.log(``)
     }
 }
 
