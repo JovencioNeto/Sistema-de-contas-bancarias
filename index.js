@@ -11,13 +11,12 @@ const mary = {
 }
 
 const myAccount = new BankAccount(jonh)
-const myAccount2 = new BankAccount(mary)
-const myAccount3 = new SavingAccount(mary)
+const myAccount2 = new SavingAccount(mary, mary.interestRate)
 
 myAccount.deposit(500)
 myAccount.withdraw(300)
 myAccount.getBalance()
-
+console.log('========================================================')
 myAccount2.deposit(2000)
-myAccount2.getBalance()
-myAccount3.applyInterest(1.5)
+myAccount2.applyInterest()
+myAccount2.withdraw(500)
