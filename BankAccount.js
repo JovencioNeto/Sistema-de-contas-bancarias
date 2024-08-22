@@ -1,29 +1,37 @@
-class BankAccount{
+class BankAccount {
     #balance
     #accountHolder
-    constructor(user){
-        this.#balance = 0
-        this.#accountHolder = user.accountHolder
+  
+    constructor(accountHolder, balance) {
+      this.#balance = balance += 0 
+      this.#accountHolder = accountHolder
+    }
+  
+    deposit(amount) {
+      this.#balance += amount
+      console.log(`${this.#accountHolder} depositou R$${amount.toFixed(2)} | Saldo total: R$${this.#balance.toFixed(2)}`)
     }
 
-    deposit(amount){
-        this.#balance += amount
-        console.log(`${this.#accountHolder} depositou R$${amount.toFixed(2)} | Saldo total : R$${this.#balance.toFixed(2)}`)
+  
+    withdraw(amount) {
+      if (this.#balance >= amount) {
+        this.#balance -= amount
+        console.log(`${this.#accountHolder} sacou R$${amount.toFixed(2)} | Saldo total: R$${this.#balance.toFixed(2)}`)
+        return true
+      } else {
+        console.log(`Saldo insuficiente para ${this.#accountHolder}`)
+        return false
+      }
     }
-    withdraw(amount){
-        if(this.#balance >= amount){
-            this.#balance -= amount
-            console.log(`${this.#accountHolder} sacou R$${amount.toFixed(2)} | Saldo total : R$${this.#balance.toFixed(2)}`)
-        }else{
-            console.log('Seu saldo bancário é insuficiente para descontar esse montante!')
-        }
+  
+    getBalance() {
+      return this.#balance
     }
-    getBalance(){
-        return this.#balance
-    }
-    getAccountHolder(){
-        return this.#accountHolder
+  
+    getAccountHolder() {
+      return this.#accountHolder
     }
 }
-
+  
 module.exports = BankAccount
+  
