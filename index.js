@@ -1,12 +1,13 @@
 const BankAccount = require('./BankAccount')
-const SavingAccount = require('./SavingAccount')
+const SavingsAccount = require('./SavingsAccount')
 
-const myAccount = new BankAccount('Jonh', 1000 )
-const myAccount2 = new SavingAccount('Mary', 1.5, 2000)
+const account1 = new BankAccount('John', 1000)
+const savingsAccount1 = new SavingsAccount('Mary', 2000, 1.5)
 
-myAccount.deposit(500)
-myAccount.withdraw(300)
-myAccount.getBalance()
-console.log('========================================================')
-myAccount2.applyInterest()
-myAccount2.withdraw(500)
+account1.deposit(500)
+account1.withdraw(300)
+
+console.log('=============================================')
+
+savingsAccount1.applyInterest()
+savingsAccount1.withdraw(500)

@@ -1,37 +1,38 @@
 class BankAccount {
-    #balance
-    #accountHolder
-  
-    constructor(accountHolder, balance) {
-      this.#balance = balance += 0 
-      this.#accountHolder = accountHolder
-    }
-  
-    deposit(amount) {
-      this.#balance += amount
-      console.log(`${this.#accountHolder} depositou R$${amount.toFixed(2)} | Saldo total: R$${this.#balance.toFixed(2)}`)
-    }
+  #balance = 0
+  #accountHolder
+  constructor(accountHolder, balance) {
+    this.#accountHolder = accountHolder
+    this.#balance = balance
+  }
 
-  
-    withdraw(amount) {
-      if (this.#balance >= amount) {
-        this.#balance -= amount
-        console.log(`${this.#accountHolder} sacou R$${amount.toFixed(2)} | Saldo total: R$${this.#balance.toFixed(2)}`)
-        return true
-      } else {
-        console.log(`Saldo insuficiente para ${this.#accountHolder}`)
-        return false
+  deposit(amount, showLog = true) {
+    if (amount > 0) {
+      this.#balance += amount
+      if (showLog) {
+        console.log(`${this.#accountHolder} depositou R$${amount.toFixed(2)} | Saldo total: R$${this.getBalance().toFixed(2)}`)
       }
+    } else {
+        console.log('Valor de depósito insuficiente.')
     }
-  
-    getBalance() {
-      return this.#balance
+  }
+
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.#balance) {
+      this.#balance -= amount
+      console.log(`${this.#accountHolder} sacou R$${amount.toFixed(2)} | Saldo total: R$${this.getBalance().toFixed(2)}`)
+    } else {
+      console.log('Valor de saque insuficiente.')
     }
-  
-    getAccountHolder() {
-      return this.#accountHolder
-    }
+  }
+
+  getBalance() {
+    return this.#balance
+  }
+
+  getAccountHolder() {
+    return this.#accountHolder
+  }
 }
-  
+
 module.exports = BankAccount
-  
